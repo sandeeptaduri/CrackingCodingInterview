@@ -21,7 +21,7 @@ public class StringCompression {
 	}
 
 	public static String stringCompress(String in) {
-		StringBuilder result = new StringBuilder();
+		StringBuilder result = new StringBuilder(in.length());
 		int count = 0;
 		char temp = in.charAt(0);
 
