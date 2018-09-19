@@ -21,7 +21,7 @@ public class StringCompression {
 	}
 
 	public static String stringCompress(String in) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		int count = 0;
 		char temp = in.charAt(0);
 
@@ -30,15 +30,17 @@ public class StringCompression {
 			if (in.charAt(i) == temp) {
 				count++;
 			} else {
-				result = result + temp + count;
+				result.append(temp);
+				result.append(count);
 				temp = in.charAt(i);
 				count = 1;
 			}
 
 		}
-		
+		result.append(temp);
+		result.append(count);
 
-		return result + temp + count;
+		return result.toString();
 
 	}
 
