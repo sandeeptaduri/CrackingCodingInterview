@@ -1,9 +1,9 @@
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class RemoveDups {
 
@@ -11,45 +11,81 @@ public class RemoveDups {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		List<Integer> input = new LinkedList<Integer>();
-		while(scan.hasNextInt()) {
-			input.add(scan.nextInt());
-			//System.out.println(input.size());
+		LinkedListNode inode = null;
+		int tempValue;
+		boolean first = true;
+
+		while (scan.hasNextInt()) {
+			tempValue = scan.nextInt();
+
+			// Add to lInkedList
+			input.add(tempValue);
+
+			// Add to Node
+			if (first) {
+				inode = new LinkedListNode(tempValue);
+				first = false;
+			} else {
+				inode.append(tempValue);
+			}
 		}
 		scan.close();
-		
-		input = cleanDups(input);
-		
-		System.out.println(""+input);
 
+		// using ListIterator
+		input = cleanDups(input);
+
+		// print result
+		System.out.println("" + input);
+
+		// using Node
+		clearDups(inode);
+
+		// print result
+		inode.print();
+
+	}
+
+	private static void clearDups(LinkedListNode n) {
+		// TODO Auto-generated method stub
+		LinkedListNode pointer = n;
+
+		Set<Integer> temp = new HashSet<Integer>();
+
+		while (n != null) {
+			if (temp.contains(n.data)) {
+				pointer.next = n.next;
+				n = n.next;
+
+			} else {
+				temp.add(n.data);
+				pointer = n;
+				n = n.next;
+			}
+		}
+
+		return;
 	}
 
 	private static List<Integer> cleanDups(List<Integer> input) {
 		// TODO Auto-generated method stub
-		Map<Integer, Boolean> temp = new HashMap<Integer, Boolean>();
-		
+		Set<Integer> temp = new HashSet<Integer>();
+
 		ListIterator<Integer> listIter = input.listIterator();
 		int tempValue;
-		
-		while(listIter.hasNext()) {
-			tempValue=listIter.next();
-			
-			if(temp.containsKey(tempValue)) {
+
+		while (listIter.hasNext()) {
+			tempValue = listIter.next();
+
+			if (temp.contains(tempValue)) {
 				listIter.remove();
-				System.out.println(""+input);
+			} else {
+				temp.add(tempValue);
 			}
-			else {
-				temp.put(tempValue, true);
-			}
-			
-			
+
 		}
-		
-		
+
 		return input;
-		
-		
+
 	}
-	
-	
 
 }
