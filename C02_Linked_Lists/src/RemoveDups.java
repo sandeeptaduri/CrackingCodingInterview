@@ -26,7 +26,7 @@ public class RemoveDups {
 				inode = new LinkedListNode(tempValue);
 				first = false;
 			} else {
-				inode.append(tempValue);
+				inode.add(tempValue);
 			}
 		}
 		scan.close();
@@ -52,14 +52,14 @@ public class RemoveDups {
 		Set<Integer> temp = new HashSet<Integer>();
 
 		while (n != null) {
-			if (temp.contains(n.data)) {
-				pointer.next = n.next;
-				n = n.next;
+			if (temp.contains(n.getData())) {
+				pointer.setNext(n.getNext());
+				n = n.getNext();
 
 			} else {
-				temp.add(n.data);
+				temp.add(n.getData());
 				pointer = n;
-				n = n.next;
+				n = n.getNext();
 			}
 		}
 

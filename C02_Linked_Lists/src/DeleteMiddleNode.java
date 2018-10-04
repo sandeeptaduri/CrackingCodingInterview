@@ -1,15 +1,13 @@
 import java.util.Scanner;
 
-public class ReturnKthtoLast {
+public class DeleteMiddleNode {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		LinkedListNode inode = null;
-		int k, index, tempValue;
+		int middle, tempValue;
 		boolean first = true;
-
-		k = scan.nextInt();
 
 		while (scan.hasNextInt()) {
 			tempValue = scan.nextInt();
@@ -22,12 +20,12 @@ public class ReturnKthtoLast {
 		}
 		scan.close();
 
-		// calculate index of Kth Element from last
-		index = inode.getLength() - k;
+		middle = inode.getLength() / 2;
 
-		// print data at index
-		System.out.println(inode.get(index).getData());
+		inode.remove(middle);
+
+		// Print Linkedlist
+		inode.print();
 
 	}
-
 }
