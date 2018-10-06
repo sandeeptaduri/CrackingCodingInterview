@@ -53,7 +53,7 @@ public class RemoveDups {
 
 		while (n != null) {
 			if (temp.contains(n.getData())) {
-				pointer.setNext(n.getNext());
+				pointer.add(n.getNext());
 				n = n.getNext();
 
 			} else {

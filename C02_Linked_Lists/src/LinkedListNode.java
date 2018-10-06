@@ -23,6 +23,16 @@ public class LinkedListNode {
 		tail = temp;
 		length++;
 	}
+	
+	public void add(LinkedListNode d) {
+		LinkedListNode n = this;
+		while (n.next != null) {
+			n = n.next;
+		}
+		n.next = d;
+		tail = d;
+		length++;
+	}
 
 	public void print() {
 		LinkedListNode n = head;
@@ -41,6 +51,7 @@ public class LinkedListNode {
 			}
 			n = n.next;
 		}
+		System.out.println("");
 	}
 
 	public LinkedListNode get(int k) {
@@ -69,6 +80,7 @@ public class LinkedListNode {
 
 			if (n.next.next == null) {
 				n.next = null;
+				n.setTail(n);
 
 			} else {
 				n.next = n.next.next;
@@ -76,6 +88,26 @@ public class LinkedListNode {
 
 		}
 
+	}
+
+	public LinkedListNode reverse() {
+		LinkedListNode n = this;
+		LinkedListNode rev = new LinkedListNode(this.getData());
+		n = n.next;
+		
+		while (n != null) {
+			LinkedListNode temp = new LinkedListNode(n.getData());
+			temp.setNext(rev.getHead());
+			rev.resetTo(temp.getHead());
+			n=n.next;
+		}
+		rev=rev.getHead();
+		
+		return rev;
+	}
+
+	public void resetTo(LinkedListNode newHead) {
+		this.setHead(newHead);
 	}
 
 	public LinkedListNode getNext() {
@@ -90,6 +122,14 @@ public class LinkedListNode {
 		return tail;
 	}
 
+	private void setHead(LinkedListNode head) {
+		this.head = head;
+	}
+
+	private void setTail(LinkedListNode tail) {
+		this.tail = tail;
+	}
+
 	public int getData() {
 		return data;
 	}
@@ -98,11 +138,11 @@ public class LinkedListNode {
 		return length;
 	}
 
-	public void setNext(LinkedListNode next) {
+	private void setNext(LinkedListNode next) {
 		this.next = next;
 	}
 
-	public void setData(int data) {
+	private void setData(int data) {
 		this.data = data;
 	}
 
