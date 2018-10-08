@@ -16,18 +16,23 @@ public class LinkedListNode {
 	public void add(int d) {
 		LinkedListNode temp = new LinkedListNode(d);
 		LinkedListNode n = this;
+		length=0;
 		while (n.next != null) {
 			n = n.next;
+			length++;
 		}
 		n.next = temp;
 		tail = temp;
 		length++;
+		
 	}
 	
 	public void add(LinkedListNode d) {
 		LinkedListNode n = this;
+		length=0;
 		while (n.next != null) {
 			n = n.next;
+			length++;
 		}
 		n.next = d;
 		tail = d;
@@ -87,6 +92,7 @@ public class LinkedListNode {
 			}
 
 		}
+		length--;
 
 	}
 
