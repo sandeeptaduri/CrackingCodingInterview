@@ -13,15 +13,18 @@ public class MyStack<T> {
 	}
 
 	StackNode<T> top;
+	private int noe;
 
 	public void push(T value) {
 		if (top == null) {
 			top = new StackNode<T>(value);
+			noe=1;
 			return;
 		}
 		StackNode<T> n = new StackNode<T>(value);
 		n.next = top;
 		top = n;
+		noe++;
 
 	}
 
@@ -38,7 +41,7 @@ public class MyStack<T> {
 		}
 		T value = top.data;
 		top=top.next;
-
+		noe--;
 		return value;
 	}
 	
@@ -47,6 +50,10 @@ public class MyStack<T> {
 			return true;
 		}
 		return false;
+	}
+	
+	public int count() {
+		return noe;
 	}
 
 }
