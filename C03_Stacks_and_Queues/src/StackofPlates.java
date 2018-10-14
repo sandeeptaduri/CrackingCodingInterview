@@ -18,11 +18,12 @@ public class StackofPlates {
 
 		// peek, pop and popAt
 		try {
-			System.out.println("popAt(1): "+ istack.popAt(1));
-			System.out.println("popAt(1): "+ istack.popAt(1));
-			
+			System.out.println("popAt(1): " + istack.popAt(1));
+			System.out.println("popAt(1): " + istack.popAt(1));
+
 			while (!istack.isEmpty()) {
-				System.out.println("peek: " + istack.peek() + " | index: " + istack.getIndex() + " | pop: " + istack.pop());
+				System.out.println(
+						"peek: " + istack.peek() + " | index: " + istack.getIndex() + " | pop: " + istack.pop());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

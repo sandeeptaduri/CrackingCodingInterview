@@ -9,14 +9,13 @@ public class StackWithMin {
 			minstack.push(value);
 		}
 	}
-    
+
 	public int peek() {
-		int value =-1;
+		int value = -1;
 		try {
-		value = istack.peek();
-		}
-		catch(Exception e) {
-			e.printStackTrace();		
+			value = istack.peek();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return value;
 	}
@@ -32,10 +31,9 @@ public class StackWithMin {
 		}
 		return value;
 	}
-	
+
 	public boolean isEmpty() {
 		return istack.empty();
 	}
-	
 
 }
