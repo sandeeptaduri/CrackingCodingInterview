@@ -15,14 +15,13 @@ public class SortStack {
 
 		scan.close();
 		System.out.println("push completed!");
-		
+
 		sortStack(istack);
-	
+
 		// peek, pop
 		try {
 			while (!istack.empty()) {
-				System.out.println(
-						"peek: " + istack.peek() + " |  pop: " + istack.pop());
+				System.out.println("peek: " + istack.peek() + " |  pop: " + istack.pop());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -30,38 +29,36 @@ public class SortStack {
 		}
 
 	}
-	
+
 	public static void sortStack(MyStack<Integer> istack) {
 		MyStack<Integer> temp = new MyStack<Integer>();
 		int c;
-		boolean sorted=false; 
-		
-		while(!sorted) {
-		c = istack.pop();
-		if(temp.empty()) {
-			temp.push(c);
-		}
-		else {
-			while(true) {
-			if(temp.empty() || c>=temp.peek()) {
+		boolean sorted = false;
+
+		while (!sorted) {
+			c = istack.pop();
+			if (temp.empty()) {
 				temp.push(c);
-				break;
+			} else {
+				while (true) {
+					if (temp.empty() || c >= temp.peek()) {
+						temp.push(c);
+						break;
+					} else {
+						istack.push(temp.pop());
+					}
+				}
+
 			}
-			else {
-				istack.push(temp.pop());
+
+			if (istack.empty()) {
+				sorted = true;
+				while (!temp.empty()) {
+					istack.push(temp.pop());
+				}
 			}
+
 		}
-			
-		}
-		
-		if(istack.empty()) {
-			sorted=true;
-			while(!temp.empty()) {
-				istack.push(temp.pop());
-			}
-		}
-			
-		}	
 	}
 }
 
